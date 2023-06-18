@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		font-family: "Nunito", sans-serif;
+	}
+	*:focus {
+		@apply outline-none;
+	}
+}
+::selection {
+	@apply bg-mainColor text-white;
+}
+::-webkit-scrollbar {
+	/* background-color: transparent;
+  width: 10px;
+  overflow: hidden; */
+	display: none;
+}
+::-webkit-scrollbar-thumb {
+	@apply bg-mainColor;
+	border-radius: 34rem;
+}
+a.active {
+	@apply text-mainColor;
+}
