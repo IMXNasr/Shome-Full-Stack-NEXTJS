@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const Home = async () => {
-	const shows = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`, { cache: "no-store" })).text());
+	const shows = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`)).text());
 	return (
 		<>
 			<Navbar />
