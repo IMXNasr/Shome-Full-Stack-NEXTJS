@@ -9,7 +9,7 @@ export const generateMetadata = ({ params: { type } }: { params: { type: string 
 };
 
 const ShowsPage = async ({ params: { type }, searchParams: { search } }: any) => {
-	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=${type}&search=${search ?? ""}`)).json();
+	const shows = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=${type}&search=${search ?? ""}`)).text());
 	return (
 		<>
 			<Navbar />

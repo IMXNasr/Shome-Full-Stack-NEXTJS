@@ -9,7 +9,6 @@ const Show = ({ id }: { id: string }) => {
 	const [show, setShow] = useState({ type: "", _id: "", image: "", name: "" });
 	const getShow = async () => {
 		const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/shows/${id}`);
-		// console.log(data);
 		if (data.success) {
 			setShow(data.show);
 		}
