@@ -11,7 +11,7 @@ const Home = async () => {
 	return (
 		<>
 			<Navbar />
-			<Content shows={shows} />;
+			<Content shows={shows || null} />;
 		</>
 	);
 };
