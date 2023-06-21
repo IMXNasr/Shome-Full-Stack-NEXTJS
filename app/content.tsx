@@ -5,7 +5,6 @@ import { appName } from "@/utils/constants";
 import { useState } from "react";
 
 const Content = ({ shows }: any) => {
-	console.log(shows);
 	const [watchTrailer, setWatchTrailer] = useState<boolean>(false);
 	const [activeSlider, setActiveSlider] = useState<number>(0);
 	return (
