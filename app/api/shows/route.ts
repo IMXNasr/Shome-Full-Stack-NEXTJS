@@ -4,11 +4,7 @@ import { navLinks } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
-export const config = {
-	api: {
-		bodyParser: true,
-	},
-};
+export const dynamicParams = true;
 
 export const GET = async (request: Request) => {
 	try {
