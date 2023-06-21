@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 
 const ShowsContent = ({ shows }: any) => {
 	const type: any = useParams().type;
+	console.log(shows);
 	return (
 		<>
 			<main className="container py-4 mt-6">
