@@ -19,6 +19,7 @@ export const GET = async (request: Request) => {
 		}
 		return NextResponse.json(allShows);
 	} catch (error) {
+		console.log("CATCH:", error);
 		return NextResponse.json({ error: error });
 	}
 };
