@@ -4,12 +4,12 @@ import { getTitle } from "@/utils/functions";
 import { notFound } from "next/navigation";
 
 const getShow = async (id: string, type?: string) => {
-	const show = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/${id}?type=${type ?? ""}`)).text());
+	const show = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/${id}?type=${type ?? ""}`)).json();
 	return show;
 };
 
 const getActors = async (id: string) => {
-	const actors = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=show`)).text());
+	const actors = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=show`)).json();
 	return actors;
 };
 

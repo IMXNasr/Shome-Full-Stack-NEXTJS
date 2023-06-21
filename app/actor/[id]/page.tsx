@@ -3,12 +3,12 @@ import { staticURL } from "@/utils/constants";
 import { getAge, getDate, getTitle } from "@/utils/functions";
 
 const getActor = async (id: string) => {
-	const actor = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`)).text());
+	const actor = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`)).json();
 	return actor;
 };
 
 const getShows = async (id: string) => {
-	const shows = JSON.parse(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=actor`)).text());
+	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=actor`)).json();
 	return shows;
 };
 
