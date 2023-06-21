@@ -7,8 +7,8 @@ export const metadata = {
 };
 
 const Home = async () => {
-	// const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`);
-	// const shows = await res.json();
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`);
+	const shows = await res.json();
 	return (
 		<>
 			<Navbar />
