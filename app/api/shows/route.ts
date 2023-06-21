@@ -4,7 +4,6 @@ import { navLinks } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
-export const dynamicParams = true;
 
 export const GET = async (request: Request) => {
 	try {
@@ -14,15 +13,14 @@ export const GET = async (request: Request) => {
 		const search = searchParams.get("search");
 		let allShows;
 		if (type === "all") {
-			allShows = await Show.find({ name: { $regex: search ?? "", $options: "i" } }).sort({ date_added: -1 });
+			allShows = await Show.find({ name: { $regex: search || "", $options: "i" } }).sort({ date_added: -1 });
 		} else if ([...navLinks.map((link) => link.link)].includes("/" + type)) {
-			allShows = await Show.find({ name: { $regex: search ?? "", $options: "i" }, type: type }).sort({ date_added: -1 });
+			allShows = await Show.find({ name: { $regex: search || "", $options: "i" }, type: type }).sort({ date_added: -1 });
 		} else {
 			return NextResponse.json({ error: "Not Found !!" });
 		}
 		return NextResponse.json(allShows);
 	} catch (error) {
-		console.log("CATCH:", error);
 		return NextResponse.json({ error: error });
 	}
 };
