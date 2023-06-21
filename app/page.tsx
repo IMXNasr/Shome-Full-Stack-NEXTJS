@@ -7,11 +7,12 @@ export const metadata = {
 };
 
 const Home = async () => {
-	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`)).json();
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`);
+	const shows = await res.json();
 	return (
 		<>
 			<Navbar />
-			<Content shows={shows || null} />
+			<Content shows={shows} />
 		</>
 	);
 };
