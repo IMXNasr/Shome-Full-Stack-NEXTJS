@@ -13,7 +13,7 @@ const getActors = async (id: string) => {
 	return actors;
 };
 
-export const generateMetadata = async ({ params: { id, type } }: { params: { id: string; type: string } }) => {
+export const generateMetadata = async ({ params: { id, type } }: { params: { id: string, type: string } }) => {
 	const data = await getShow(id, type);
 	if (data.success)
 		return {
@@ -21,7 +21,7 @@ export const generateMetadata = async ({ params: { id, type } }: { params: { id:
 		};
 };
 
-const OneShowPage = async ({ params: { id, type } }: { params: { id: string; type: string } }) => {
+const OneShowPage = async ({ params: { id, type } }: { params: { id: string, type: string } }) => {
 	const data = await getShow(id, type);
 	const actors = await getActors(id);
 	if (data.error) notFound();

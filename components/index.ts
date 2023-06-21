@@ -1,3 +1,4 @@
+export { default as Providers } from "./Providers";
 export { default as Navbar } from "./Navbar";
 export { default as Slider } from "./Slider";
 export { default as ShowCard } from "./ShowCard";
