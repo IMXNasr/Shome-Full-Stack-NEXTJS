@@ -1,19 +1,5 @@
-import { appName } from "@/utils/constants";
-import Content from "./content";
-import { Navbar } from "@/components";
-
-export const metadata = {
-	title: appName,
+const HomePage = () => {
+	return <div>HomePage</div>;
 };
 
-const Home = async () => {
-	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`)).json();
-	return (
-		<>
-			<Navbar />
-			<Content shows={shows} />
-		</>
-	);
-};
-
-export default Home;
+export default HomePage;
