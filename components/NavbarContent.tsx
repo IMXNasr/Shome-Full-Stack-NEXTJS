@@ -82,7 +82,7 @@ const NavButtons = ({ mobile, onClick, username }: NavButtonsProps) => {
 	);
 };
 
-const NavbarContent = ({user}: any) => {
+const NavbarContent = ({ user }: any) => {
 	const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
 	return (
 		<nav>
