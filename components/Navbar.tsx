@@ -7,7 +7,7 @@ const Navbar = async () => {
 	return (
 		<>
 			<h1>Hi</h1>
-			{/* <NavbarContent user={session && session.user} /> */}
+			<NavbarContent user={session && session.user} />
 		</>
 	);
 };
