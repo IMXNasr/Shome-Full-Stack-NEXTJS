@@ -1,8 +1,9 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import authOptions from "@/utils/auth";
 import { getServerSession } from "next-auth";
 
 const Navbar = async () => {
 	const session = await getServerSession(authOptions);
+	console.log(session);
 	return (
 		<>
 			<h1>Hi</h1>
