@@ -6,6 +6,7 @@ import { FaBars, FaSearch, FaUser } from "react-icons/fa";
 import { appName, navLinks } from "@/utils/constants";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface LinkListProps {
 	mobile?: boolean;
@@ -82,7 +83,7 @@ const NavButtons = ({ mobile, onClick, username }: NavButtonsProps) => {
 	);
 };
 
-const NavbarContent = ({ user }: any) => {
+const NavbarContent = ({user}: any) => {
 	const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
 	return (
 		<nav>

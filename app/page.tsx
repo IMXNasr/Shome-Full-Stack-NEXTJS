@@ -1,10 +1,14 @@
 import { Navbar } from "@/components";
+import HomeContent from "./content";
 
-const HomePage = () => {
+const HomePage = async () => {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/featured`);
+	const data = await res.json();
+
 	return (
 		<>
 			<Navbar />
-			<h1>Home Page</h1>
+			{res.status !== 200 ? <h1>{data}</h1> : <HomeContent shows={data} />}
 		</>
 	);
 };
