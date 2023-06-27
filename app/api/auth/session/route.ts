@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../[...nextauth]/route";
+import authOptions from "@/utils/auth";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
