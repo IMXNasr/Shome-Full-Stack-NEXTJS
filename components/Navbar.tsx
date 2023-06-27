@@ -1,5 +1,7 @@
+import { getServerSession } from "next-auth";
+
 const Navbar = async () => {
-	const session = undefined;
+	const session = getServerSession();
 	return (
 		<>
 			<h1>Hi</h1>
