@@ -11,7 +11,6 @@ export const GET = async (request: Request) => {
 		const { searchParams } = new URL(request.url);
 		const type = searchParams.get("type");
 		const search = searchParams.get("search");
-		console.log("SEARCH:", search);
 		let allShows;
 		if (type === "all") {
 			allShows = await Show.find({ name: { $regex: search, $options: "i" } }).sort({ date_added: -1 });

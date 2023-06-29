@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
-	secret: process.env.NEXTAUTH_SECRET as string,
+	secret: process.env.NEXTAUTH_SECRET,
 	session: {
 		strategy: "jwt",
 	},
@@ -17,12 +17,12 @@ export const authOptions: NextAuthOptions = {
 			authorize: async (credentials) => {
 				const config = {
 					method: "POST",
-					body: JSON.stringify({ email: credentials?.email, password: credentials?.password }),
+					body: JSON.stringify(credentials),
 				};
 				const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, config);
 				const data = await res.json();
-				if (res.status !== 200) return new Error(data);
-				return data;
+				if (res.status !== 200) throw new Error(data)
+				return data
 			},
 		}),
 	],
@@ -39,8 +39,6 @@ export const authOptions: NextAuthOptions = {
 		signIn: "/login",
 	},
 };
-
-export default authOptions;
 
 const handler = NextAuth(authOptions);
 
