@@ -61,9 +61,7 @@ const Search = ({ mobile = false, setShowMobileNav }: SearchProps) => {
 };
 
 const NavButtons = ({ mobile, onClick }: NavButtonsProps) => {
-	const { data: session } = useSession();
-	const { status } = useSession();
-	console.log(status, session);
+	const { data: session, status } = useSession();
 	return (
 		<div className={`${!mobile ? "hidden" : ""} ${mobile ? "flex" : ""} xl:flex`}>
 			{status === "unauthenticated" ? (
