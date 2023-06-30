@@ -1,4 +1,3 @@
-import { Navbar } from "@/components";
 import ShowsContent from "./content";
 import { getTitle } from "@/utils/functions";
 
@@ -13,7 +12,6 @@ const ShowsPage = async ({ params: { type }, searchParams: { search } }: any) =>
 	const data = await res.json();
 	return (
 		<>
-			<Navbar />
 			{res.status !== 200 ? <h1>{data}</h1> : <ShowsContent shows={data} />}
 		</>
 	);

@@ -1,4 +1,3 @@
-import { Navbar } from "@/components";
 import HomeContent from "./content";
 
 const HomePage = async () => {
@@ -7,7 +6,6 @@ const HomePage = async () => {
 
 	return (
 		<>
-			<Navbar />
 			{res.status !== 200 ? <h1>{data}</h1> : <HomeContent shows={data} />}
 		</>
 	);
