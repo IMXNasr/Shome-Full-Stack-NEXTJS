@@ -13,7 +13,7 @@ export const GET = async (request: Request) => {
 		const search = searchParams.get("search");
 		let allShows;
 		if (type === "all") {
-			allShows = await Show.find({ name: { $regex: search, $options: "i" } }).sort({ date_added: -1 });
+			allShows = await Show.find({ name: { $regex: search ?? "", $options: "i" } }).sort({ date_added: -1 });
 		} else if ([...navLinks.map((link) => link.link)].includes("/" + type)) {
 			allShows = await Show.find({ name: { $regex: search, $options: "i" }, type }).sort({ date_added: -1 });
 		} else {
