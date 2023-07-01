@@ -8,25 +8,27 @@ const getShow = async (id: string, type?: string) => {
 	return { status: res.status, data };
 };
 
-// const getActors = async (id: string) => {
-// 	const actors = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=show`)).json();
-// 	return actors;
-// };
+const getActors = async (id: string) => {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=show`);
+	const actors = await res.json();
+	return actors;
+};
 
 export const generateMetadata = async ({ params: { id, type } }: { params: { id: string; type: string } }) => {
 	const { status, data } = await getShow(id, type);
 	if (status === 200)
-		return {
-			title: getTitle(data.name),
-		};
+	return {
+		title: getTitle(data.name),
+	};
 };
 
 const OneShowPage = async ({ params: { id, type } }: { params: { id: string; type: string } }) => {
 	const { status, data } = await getShow(id, type);
+	const actors = await getActors(id);
 	if (status !== 200) notFound();
 	return (
 		<>
-			<OneShowContent show={data} actors={[]} />
+			<OneShowContent show={data} actors={actors} />
 		</>
 	);
 };
