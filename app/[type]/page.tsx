@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import ShowsContent from "./content";
 import { getTitle } from "@/utils/functions";
 
@@ -12,7 +13,7 @@ const ShowsPage = async ({ params: { type }, searchParams: { search } }: any) =>
 	const data = await res.json();
 	return (
 		<>
-			{res.status !== 200 ? <h1>{data}</h1> : <ShowsContent shows={data} />}
+			{res.status !== 200 ? notFound() : <ShowsContent shows={data} />}
 		</>
 	);
 };
