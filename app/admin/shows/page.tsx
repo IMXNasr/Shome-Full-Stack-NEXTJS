@@ -17,7 +17,28 @@ const AdminShowsPage = async () => {
 	} else if (!session.user.admin) {
 		return redirect("/");
 	}
-	const data: any = [];
+	const data: any = [{
+    "_id": "642ce47cae6c910e5b9b744d",
+    "name": "Avatar: The Way of Water",
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "description": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+    "released_date": "2022-12-16T00:00:00.000Z",
+    "rating": 7.8,
+    "num_episodes": 0,
+    "runtime": 192,
+    "trailer_link": "https://www.youtube.com/watch?v=d9MyW72ELq0",
+    "country": "United States",
+    "image": "1680663676779_avatar.jpg",
+    "cover": "1680663676779_avatarcover.jpg",
+    "featured": true,
+    "date_added": "2023-04-05T03:01:16.782Z",
+    "__v": 0
+  }];
 	return (
 		<main className="container my-5">
 			<h1 className="text-4xl font-semibold my-5">Shows:</h1>
