@@ -34,7 +34,7 @@ const AdminShowsPage = async () => {
 							</tr>
 						</thead>
 						<tbody>
-							{data?.map((show: any, idx: number) => (
+							{data && data.map((show: any, idx: number) => (
 								<tr className="border-t" key={idx}>
 									<td className="p-3 text-center">
 										<Link className="underline text-mainColor" href={"/admin/shows/" + show._id}>
