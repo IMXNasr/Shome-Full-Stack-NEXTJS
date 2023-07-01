@@ -1,5 +1,6 @@
 "use client";
 
+import { Spinner } from "@/components";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -41,7 +42,7 @@ const LoginContent = () => {
 					</Link>
 				</p>
 				<button className="bg-mainColor w-full text-white py-3 cursor-pointer rounded-xl" type="submit" name="submit">
-					{loading ? "Loading..." : "Login"}
+					{loading ? <Spinner size={24} /> : "Login"}
 				</button>
 			</form>
 		</div>

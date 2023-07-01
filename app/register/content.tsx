@@ -1,9 +1,10 @@
 "use client";
 
+import { Spinner } from "@/components";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { FormEvent, useReducer, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 const RegisterContent = () => {
 	const [name, setName] = useState<string>("");
@@ -49,7 +50,7 @@ const RegisterContent = () => {
 					</Link>
 				</p>
 				<button className="bg-mainColor w-full text-white py-3 cursor-pointer rounded-xl" type="submit" name="submit">
-					{loading ? "Loading..." : "Register"}
+					{loading ? <Spinner size={24} /> : "Register"}
 				</button>
 			</form>
 		</div>
