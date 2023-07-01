@@ -8,10 +8,11 @@ import { staticURL } from "../utils/constants";
 const Show = ({ id }: { id: string }) => {
 	const [show, setShow] = useState({ type: "", _id: "", image: "", name: "" });
 	const getShow = async () => {
-		// const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/shows/${id}`);
-		// if (data.success) {
-		// 	setShow(data.show);
-		// }
+		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/${id}`);
+		const data = await res.json();
+		if (res.status === 200) {
+			setShow(data);
+		}
 	};
 	useEffect(() => {
 		getShow();
