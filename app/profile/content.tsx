@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 
 const ProfileContent = () => {
 	const router = useRouter();
-	const logoutFn = () => {
-		signOut();
-		router.replace("/");
+	const logoutFn = async () => {
+		await signOut({ redirect: false });
+		router.replace("/login?redirect=/profile");
 	};
 	return (
 		<div className="container">
-			<button onClick={logoutFn} className="py-2 px-4 bg-mainColor rounded-lg">
+			<button onClick={() => logoutFn()} className="py-2 px-4 bg-mainColor rounded-lg">
 				Logout
 			</button>
 		</div>

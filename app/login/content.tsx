@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 const LoginContent = () => {
@@ -10,6 +10,7 @@ const LoginContent = () => {
 	const [password, setPassword] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(false);
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const submitFn = async (e: FormEvent) => {
 		e.preventDefault();
 		if (email && email.includes("@") && password) {
@@ -18,7 +19,11 @@ const LoginContent = () => {
 			if (data?.error) {
 				setLoading(false);
 			} else if (!data?.error) {
-				router.replace("/");
+				if (searchParams.get("redirect")) {
+					router.replace(searchParams.get("redirect") as string);
+				} else {
+					router.replace("/");
+				}
 			}
 		}
 	};
