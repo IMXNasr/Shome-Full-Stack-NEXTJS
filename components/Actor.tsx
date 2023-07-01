@@ -1,6 +1,5 @@
 "use client";
 
-// import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { staticURL } from "../utils/constants";
@@ -20,8 +19,11 @@ interface actorProps {
 const Actor = ({ id, as }: { id: string; as: string }) => {
 	const [actor, setActor] = useState<actorProps>({ _id: "", name: "", gender: "", biography: "", birthday: "", place_of_birth: "", photo: "", date_added: "" });
 	const getActor = async () => {
-		// const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`);
-		// setActor({});
+		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`);
+		const data = await res.json();
+		if (res.status === 200) {
+			setActor(data);
+		}
 	};
 	useEffect(() => {
 		getActor();
