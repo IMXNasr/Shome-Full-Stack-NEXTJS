@@ -1,4 +1,5 @@
-import { appName, symbol } from "./constants";
+import { writeFile } from "fs/promises";
+import { appName, staticURL, symbol } from "./constants";
 import crypto from "crypto";
 
 export const getLocalStorage = (name: string) => {
@@ -29,4 +30,12 @@ export const getTitle = (name: string) => {
 
 export const sha1 = (data: string) => {
 	return crypto.createHash("sha1").update(data, "binary").digest("hex");
+};
+
+export const saveFile = async (file: any, type: "show" | "cover" | "actor") => {
+	const newFileName = Date.now() + "_" + file.name;
+	const bytes = await file.arrayBuffer();
+	const buffer = Buffer.from(bytes);
+	await writeFile(`./public${staticURL}/${type}/${newFileName}`, buffer);
+	return newFileName;
 };
