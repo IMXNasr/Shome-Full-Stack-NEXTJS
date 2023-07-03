@@ -17,7 +17,7 @@ const ShowsPage = async () => {
 	} else if (!session.user.admin) {
 		return redirect("/");
 	}
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors`);
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors`, { cache: "no-store" });
 	const data = await res.json();
 	return (
 		<>

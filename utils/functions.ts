@@ -15,7 +15,7 @@ export const getJwtSecretKey = () => {
 };
 
 export const getDate = (date: Date | string) => {
-	const newDate = new Date(date).getFullYear() + "-" + new Date(date).getMonth() + "-" + new Date(date).getDate();
+	const newDate = new Date(date).getFullYear() + "-" + (new Date(date).getMonth() + 1) + "-" + new Date(date).getDate();
 	return newDate;
 };
 

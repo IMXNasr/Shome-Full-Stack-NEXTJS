@@ -17,7 +17,7 @@ const AdminShowsPage = async () => {
 	} else if (!session.user.admin) {
 		return redirect("/");
 	}
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=all`);
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=all`, { cache: "no-store" });
 	const data = await res.json();
 	return (
 		<main className="container my-5">
