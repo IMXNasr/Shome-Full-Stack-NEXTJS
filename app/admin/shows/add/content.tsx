@@ -40,7 +40,7 @@ const AddShowContent = ({ countries }: any) => {
 			method: "POST",
 			body: formData,
 		};
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/add`, config);
+		await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows/add`, config);
 		setLoading(false);
 	};
 	return (
