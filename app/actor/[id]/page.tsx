@@ -22,7 +22,6 @@ export const generateMetadata = async ({ params: { id } }: { params: { id: strin
 const OneActor = async ({ params: { id } }: { params: { id: string } }) => {
 	const actor = await getActor(id);
 	const shows = await getShows(id);
-	// actor.name is the title
 	return (
 		<>
 			{/* Actor Name */}
