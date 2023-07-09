@@ -11,7 +11,8 @@ export const generateMetadata = ({ params: { type } }: { params: { type: string 
 const ShowsPage = async ({ params: { type }, searchParams: { search } }: any) => {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=${type}&search=${search || ""}`, { cache: "no-store" });
 	const data = await res.json();
-	return <>{res.status !== 200 ? notFound() : <ShowsContent shows={data} />}</>;
+	if (res.status !== 200) notFound();
+	return <ShowsContent shows={data} />;
 };
 
 export default ShowsPage;
