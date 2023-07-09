@@ -26,11 +26,7 @@ const OneShowPage = async ({ params: { id, type } }: { params: { id: string; typ
 	const { status, data } = await getShow(id, type);
 	const actors = await getActors(id);
 	if (status !== 200) notFound();
-	return (
-		<>
-			<OneShowContent show={data} actors={actors} />
-		</>
-	);
+	return <OneShowContent show={data} actors={actors} />;
 };
 
 export default OneShowPage;

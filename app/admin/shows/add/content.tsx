@@ -34,8 +34,8 @@ const AddShowContent = ({ countries }: any) => {
 		formData.append("trailer_link", trailerLink);
 		formData.append("country", country);
 		formData.append("featured", new Boolean(featured).toString());
-		formData.append("image", image as Blob);
-		formData.append("cover", cover as Blob);
+		if (image) formData.append("image", image as Blob);
+		if (cover) formData.append("cover", cover as Blob);
 		const config = {
 			method: "POST",
 			body: formData,
