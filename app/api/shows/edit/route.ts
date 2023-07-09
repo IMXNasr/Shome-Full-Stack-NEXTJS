@@ -5,7 +5,7 @@ import { saveFile } from "@/utils/functions";
 import { unlinkSync } from "fs";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force_dynamic";
+export const dynamic = "force-dynamic";
 
 export const PUT = async (request: Request) => {
 	try {
