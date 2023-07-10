@@ -1,9 +1,19 @@
 "use client";
 
 import { ShowCard } from "@/components";
+import { SkeletonShowCard } from "@/components";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+const Loader = () => (
+	<>
+		<SkeletonShowCard />
+		<SkeletonShowCard />
+		<SkeletonShowCard />
+		<SkeletonShowCard />
+	</>
+);
 
 const ShowsContent = ({ data, showsByScroll }: { data: any; showsByScroll: number }) => {
 	const type: string = useParams().type;
@@ -25,7 +35,7 @@ const ShowsContent = ({ data, showsByScroll }: { data: any; showsByScroll: numbe
 			<main className="container py-4 mt-6">
 				<h1 className="text-4xl font-semibold">All {type === "all" ? "Shows" : type === "tv" ? "TV Series" : type[0].toUpperCase() + type.substring(1) + "s"}</h1>
 				{/* Grid Shows */}
-				<InfiniteScroll loader={<h3>Loading...</h3>} next={getMoreShows} dataLength={shows.length} hasMore={hasMore} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5 gap-6">
+				<InfiniteScroll loader={<Loader />} next={getMoreShows} dataLength={shows.length} hasMore={hasMore} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5 gap-6">
 					{shows.map((show: any, idx: number) => (
 						<ShowCard key={idx} {...show} />
 					))}
