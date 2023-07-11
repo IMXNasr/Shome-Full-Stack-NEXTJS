@@ -2,8 +2,8 @@
 
 import { ShowCard } from "@/components";
 import { SkeletonShowCard } from "@/components";
-import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Loader = () => (
@@ -17,12 +17,17 @@ const Loader = () => (
 
 const ShowsContent = ({ data, showsByScroll }: { data: any; showsByScroll: number }) => {
 	const type: string = useParams().type;
-	const search: string = useParams().search;
+	const searchParams = useSearchParams();
 	const [shows, setShows] = useState(data);
 	const [hasMore, setHasMore] = useState(true);
 	const [skip, setSkip] = useState(showsByScroll);
+	useEffect(() => {
+		setShows(data);
+		setHasMore(true);
+		setSkip(showsByScroll);
+	}, [data]);
 	const getMoreShows = async () => {
-		const newShows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=${type}&search=${search || ""}&skip=${skip}&limit=${showsByScroll}`)).json();
+		const newShows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shows?type=${type}&search=${searchParams.get("search") || ""}&skip=${skip}&limit=${showsByScroll}`)).json();
 		if (newShows.length <= 0) {
 			setHasMore(false);
 		} else {

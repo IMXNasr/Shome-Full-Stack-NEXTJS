@@ -48,7 +48,7 @@ const Search = ({ mobile = false, setShowMobileNav }: SearchProps) => {
 		if (mobile) {
 			setShowMobileNav(false);
 		}
-		router.push("/all/?search=" + search);
+		router.push("/all?search=" + search);
 	};
 	return (
 		<form onSubmit={searchFn} className={`${!mobile ? "hidden" : ""} ${mobile ? "flex" : ""} xl:flex items-center border rounded-xl p-2`} method="POST">
