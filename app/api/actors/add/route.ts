@@ -18,7 +18,7 @@ export const POST = async (request: Request) => {
 			biography: data.get("biography"),
 			birthday: data.get("birthday"),
 			place_of_birth: data.get("place_of_birth"),
-			photo: await saveFile(photo, "actor"),
+			photo: photo ? await saveFile(photo, "actor") : null,
 		};
 		await Actor.create(newActor);
 		return NextResponse.json("Actor added successfully !!", { status: 200 });

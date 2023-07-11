@@ -24,7 +24,7 @@ export const POST = async (request: Request) => {
 			runtime: Number(data.get("runtime")),
 			trailer_link: data.get("trailer_link"),
 			country: data.get("country"),
-			image: await saveFile(image, "show"),
+			image: image ? await saveFile(image, "show") : null,
 			cover: cover ? await saveFile(cover, "cover") : null,
 			featured: data.get("featured") === "true" ? true : false,
 		};
