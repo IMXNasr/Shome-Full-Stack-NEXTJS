@@ -13,7 +13,7 @@ interface Props {
 const ShowCard = ({ _id, name, type, image, rating }: Props) => {
 	const showLink = `/${type}/${_id}`;
 	return (
-		<div className="rounded-xl bg-[#22252f] overflow-hidden p-2">
+		<div className="rounded-xl bg-card overflow-hidden p-2">
 			{/* Image Container */}
 			<Link href={showLink} className="overflow-hidden">
 				<img className="rounded-xl" src={staticURL + "/show/" + image} alt={name} />
