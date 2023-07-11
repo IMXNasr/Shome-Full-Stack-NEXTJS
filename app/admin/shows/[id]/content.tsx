@@ -2,10 +2,10 @@
 
 import { Spinner } from "@/components";
 import { showTypes, genres as genresData } from "@/utils/constants";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-const EditShowContent = ({ id, show, countries }: any) => {
+const EditShowContent = ({ show, countries }: any) => {
 	const [name, setName] = useState(show.name);
 	const [type, setType] = useState(show.type);
 	const [genres, setGenres] = useState(show.genres);
@@ -21,6 +21,7 @@ const EditShowContent = ({ id, show, countries }: any) => {
 	const [cover, setCover] = useState<File>();
 	const [loading, setLoading] = useState(false);
 	const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+	const id: string = useParams().id;
 	const router = useRouter();
 
 	const submitFn = async (e: FormEvent) => {
