@@ -3,17 +3,17 @@ import { staticURL } from "@/utils/constants";
 import { getAge, getDate, getTitle } from "@/utils/functions";
 
 const getActor = async (id: string) => {
-	const actor = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`)).json();
+	const actor = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/actors/${id}`, { cache: "no-store" })).json();
 	return actor;
 };
 
 const getShows = async (id: string) => {
-	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=actor`)).json();
+	const shows = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/acts/${id}?for=actor`, { cache: "no-store" })).json();
 	return shows;
 };
 
 export const generateMetadata = async ({ params: { id } }: { params: { id: string } }) => {
-  const actor = await getActor(id);
+	const actor = await getActor(id);
 	return {
 		title: getTitle(actor.name),
 	};
