@@ -23,7 +23,7 @@ const ShowsContent = ({ data, showsByScroll }: { data: any; showsByScroll: numbe
 	const [skip, setSkip] = useState(showsByScroll);
 	useEffect(() => {
 		setShows(data);
-		setHasMore(true);
+		setHasMore(data.length < showsByScroll ? false : true);
 		setSkip(showsByScroll);
 	}, [data]);
 	const getMoreShows = async () => {

@@ -13,9 +13,9 @@ const OneShowContent = ({ show, actors }: any) => {
 		let value = window.scrollY;
 		if (section?.current) {
 			if (window.innerWidth >= 1024) {
-				section.current.style.top = "-" + (value * 0.5 + 300) + "px";
+				section.current.style.top = (300 - value * 0.5) + "px";
 			} else {
-				section.current.style.top = "-" + (value * 0.5 + 500) + "px";
+				section.current.style.top = (100 - value * 0.5) + "px";
 			}
 		}
 	};
@@ -24,11 +24,11 @@ const OneShowContent = ({ show, actors }: any) => {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 	return (
-		<>
+		<div className="pointer-events-none bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `linear-gradient(to bottom, #161a1e, #161a1ecc, #161a1e), url(${staticURL + "/cover/" + show.cover})` }}>
 			{/* Background */}
-			<div className="h-[600px] pointer-events-none bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `linear-gradient(to bottom, #161a1e, #161a1ecc, #161a1e), url(${"/uploads/cover/" + show.cover})` }} />
+			{/* <div className="h-[600px] pointer-events-none bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `linear-gradient(to bottom, #161a1e, #161a1ecc, #161a1e), url(${"/uploads/cover/" + show.cover})` }} /> */}
 			{/* Bottom Section */}
-			<div ref={section} className="container relative grid lg:grid-cols-3 xl:grid-cols-4 -top-[500px] lg:-top-[300px] gap-8">
+			<div ref={section} className="pointer-events-auto container relative grid lg:grid-cols-3 xl:grid-cols-4 top-[100px] lg:top-[300px] gap-8">
 				{/* Image Container */}
 				<div className="mx-auto lg:mx-0">
 					<div className="overflow-hidden rounded-2xl w-72 md:w-80 lg:w-full shadow-xl">
@@ -86,19 +86,21 @@ const OneShowContent = ({ show, actors }: any) => {
 				</div>
 
 				{/* Crew Section */}
-				<div className="w-80">
-					<h1 className="text-4xl font-semibold mb-5">Cast & Crew</h1>
-					{/* Actors */}
-					<div>
-						{actors.map((act: any, idx: number) => (
-							<Actor key={idx} id={act.actor} as={act.act_as} />
-						))}
+				{actors.length > 0 && (
+					<div className="w-80">
+						<h1 className="text-4xl font-semibold mb-5">Cast & Crew</h1>
+						{/* Actors */}
+						<div>
+							{actors.map((act: any, idx: number) => (
+								<Actor key={idx} id={act.actor} as={act.act_as} />
+							))}
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 			{/* YouTube */}
 			{watchTrailer && <WatchTrailer url={show.trailer_link} setWatchTrailer={setWatchTrailer} />}
-		</>
+		</div>
 	);
 };
 

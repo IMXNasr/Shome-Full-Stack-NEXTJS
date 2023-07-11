@@ -24,16 +24,14 @@ const OneActor = async ({ params: { id } }: { params: { id: string } }) => {
 	const shows = await getShows(id);
 	return (
 		<>
-			{/* Actor Name */}
-			<div className="container mt-6">
-				<h1 className="text-4xl font-semibold">{actor.name}</h1>
-			</div>
 			{/* Body */}
 			<main className="container flex flex-col md:flex-row gap-6 my-6">
 				{/* Left Side */}
-				<div className="max-w-[300px] md:w-2/4 lg:w-1/4">
+				<div className="md:max-w-[300px] md:w-2/4 lg:w-1/4">
+					{/* Actor Name */}
+					<h1 className="mb-5 text-4xl font-semibold w-full">{actor.name}</h1>
 					{/* Photo Container */}
-					<div className="overflow-hidden rounded-2xl mx-auto bg-red">
+					<div className="overflow-hidden rounded-2xl mx-auto sm:mx-16 md:mx-auto bg-red">
 						<img className="w-full rounded-2xl" src={staticURL + "/actor/" + actor.photo} alt={actor.name} />
 					</div>
 					<h2 className="text-xl font-medium my-4">Personal Info</h2>
