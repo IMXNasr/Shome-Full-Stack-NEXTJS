@@ -14,7 +14,6 @@ export const POST = async (request: Request) => {
 			username: body.username,
 			email: body.email,
 			password: sha1(body.password),
-			admin: false,
 		};
 		const checkUsername = await User.findOne({ username: user.username });
 		const checkEmail = await User.findOne({ email: user.email });
