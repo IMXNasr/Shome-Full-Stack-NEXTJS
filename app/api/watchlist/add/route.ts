@@ -11,10 +11,10 @@ export const GET = async (request: Request) => {
 		const id = searchParams.get("id");
 		const showId = searchParams.get("showId");
 		const user = await User.findOne({ _id: id });
-		if (user.wishlist.includes(showId)) return NextResponse.json("Show is already exists !!", { status: 200 });
-		const newWishlist = [...user.wishlist, showId];
-		await User.findByIdAndUpdate(id, { wishlist: newWishlist });
-		return NextResponse.json("Show added to wishlist successfully !!", { status: 200 });
+		if (user.watchlist.includes(showId)) return NextResponse.json("Show is already exists !!", { status: 200 });
+		const newWatchlist = [...user.watchlist, showId];
+		await User.findByIdAndUpdate(id, { watchlist: newWatchlist });
+		return NextResponse.json("Show added to watchlist successfully !!", { status: 200 });
 	} catch (error) {
 		return NextResponse.json(error, { status: 400 });
 	}

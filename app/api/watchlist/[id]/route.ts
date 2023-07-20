@@ -8,7 +8,7 @@ export const GET = async (request: Request, { params: { id } }: { params: { id: 
 	try {
 		await connect();
 		const user = await User.findOne({ _id: id });
-		return NextResponse.json(user.wishlist, { status: 200 });
+		return NextResponse.json(user.watchlist, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(error, { status: 400 });
 	}
