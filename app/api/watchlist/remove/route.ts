@@ -12,7 +12,6 @@ export const GET = async (request: Request) => {
 		const showId = searchParams.get("showId");
 		const user = await User.findOne({ _id: id });
 		const newWishlist = user.wishlist.filter((item: string) => item !== showId);
-		console.log(newWishlist);
 		await User.findByIdAndUpdate(id, { wishlist: newWishlist });
 		return NextResponse.json("Show removed from wishlist successfully !!", { status: 200 });
 	} catch (error) {
