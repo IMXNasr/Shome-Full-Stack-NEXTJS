@@ -7,7 +7,7 @@ const UserSchema = new Schema({
 	password: { type: String, required: true },
 	admin: { type: Boolean, default: false },
 	date_joined: { type: Date, default: Date.now },
-	wishlist: { type: [Schema.Types.ObjectId], ref: "Show", default: [] },
+	wishlist: { type: [String], default: [] },
 });
 
 const User = models.User || model("User", UserSchema);
