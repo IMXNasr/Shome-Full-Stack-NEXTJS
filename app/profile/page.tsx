@@ -4,6 +4,8 @@ import { getTitle } from "@/utils/functions";
 import { notFound, redirect } from "next/navigation";
 import ProfileContent from "./content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
 	title: getTitle("Profile"),
 };
