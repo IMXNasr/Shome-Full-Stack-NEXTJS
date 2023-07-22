@@ -25,7 +25,6 @@ const EditActorContent = ({ countries, actor }: any) => {
 		formData.append("birthday", birthday);
 		formData.append("place_of_birth", placeOfBirth);
 		if (photo) formData.append("photo", photo as Blob);
-		console.log(formData);
 		const config = {
 			method: "PUT",
 			body: formData,

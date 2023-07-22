@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getTitle } from "@/utils/functions";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ProfileContent from "./content";
 
 export const metadata = {
@@ -13,7 +13,10 @@ const Profile = async () => {
 	if (!session) {
 		return redirect("/login?redirect=/profile");
 	}
-	return <ProfileContent />;
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/watchlist/${session.user._id}`);
+	const data = await res.json();
+	if (res.status !== 200) notFound();
+	return <ProfileContent user={session.user} watchlist={data} />;
 };
 
 export default Profile;

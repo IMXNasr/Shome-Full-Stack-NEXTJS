@@ -8,3 +8,4 @@ export { default as Actor } from "./Actor";
 export { default as Show } from "./Show";
 export { default as WatchTrailer } from "./WatchTrailer";
 export { default as SkeletonShowCard } from "./SkeletonShowCard";
+export { default as Stat } from "./Stat";

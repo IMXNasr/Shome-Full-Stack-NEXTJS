@@ -1,3 +1,4 @@
+import Show from "@/models/Show";
 import User from "@/models/User";
 import connect from "@/utils/connect";
 import { NextResponse } from "next/server";
@@ -8,7 +9,8 @@ export const GET = async (request: Request, { params: { id } }: { params: { id: 
 	try {
 		await connect();
 		const user = await User.findOne({ _id: id });
-		return NextResponse.json(user.watchlist, { status: 200 });
+		const shows = (await Show.find({ _id: { $in: user.watchlist } }).select("id name type image rating")).reverse();
+		return NextResponse.json(shows, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(error, { status: 400 });
 	}

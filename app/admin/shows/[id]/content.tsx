@@ -41,7 +41,6 @@ const EditShowContent = ({ show, countries }: any) => {
 		formData.append("featured", new Boolean(featured).toString());
 		if (image) formData.append("image", image as Blob);
 		if (cover) formData.append("cover", cover as Blob);
-		console.log(formData);
 		const config = {
 			method: "PUT",
 			body: formData,

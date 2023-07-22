@@ -11,8 +11,9 @@ export const GET = async (request: Request) => {
 		const id = searchParams.get("id");
 		const showId = searchParams.get("showId");
 		const user = await User.findOne({ _id: id });
-		const newWatchlist = user.watchlist.filter((item: string) => item !== showId);
-		await User.findByIdAndUpdate(id, { watchlist: newWatchlist });
+		const watchlist = user.watchlist;
+		watchlist.remove(showId);
+		await User.findByIdAndUpdate(id, { watchlist });
 		return NextResponse.json("Show removed from watchlist successfully !!", { status: 200 });
 	} catch (error) {
 		return NextResponse.json(error, { status: 400 });

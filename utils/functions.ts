@@ -8,12 +8,6 @@ export const getLocalStorage = (name: string) => {
 	}
 };
 
-export const getJwtSecretKey = () => {
-	const secret = process.env.NEXT_PUBLIC_JWT_SECRET as string;
-	if (!secret || secret.length === 0) throw new Error("getJwtSecretKey ERROR");
-	return secret;
-};
-
 export const getDate = (date: Date | string) => {
 	const newDate = new Date(date).getFullYear() + "-" + (new Date(date).getMonth() + 1) + "-" + new Date(date).getDate();
 	return newDate;
