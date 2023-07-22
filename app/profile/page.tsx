@@ -13,7 +13,7 @@ const Profile = async () => {
 	if (!session) {
 		return redirect("/login?redirect=/profile");
 	}
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/watchlist/${session.user._id}`);
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/watchlist/${session.user._id}`, { cache: "no-store" });
 	const data = await res.json();
 	if (res.status !== 200) notFound();
 	return <ProfileContent user={session.user} watchlist={data} />;
