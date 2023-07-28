@@ -21,8 +21,8 @@ export const authOptions: NextAuthOptions = {
 				};
 				const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, config);
 				const data = await res.json();
-				if (res.status !== 200) throw new Error(data)
-				return data
+				if (res.status !== 200) throw new Error(data);
+				return data;
 			},
 		}),
 	],

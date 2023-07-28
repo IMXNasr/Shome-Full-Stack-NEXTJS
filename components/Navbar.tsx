@@ -66,18 +66,16 @@ const NavButtons = ({ mobile, onClick }: NavButtonsProps) => {
 		<div className={`${!mobile ? "hidden" : ""} ${mobile ? "flex" : ""} xl:flex`}>
 			{status === "unauthenticated" ? (
 				<>
-					<Link onClick={onClick} href="/register">
-						<button className="pointer-events-none py-2 px-4 bg-mainColor rounded-xl">Register</button>
+					<Link onClick={onClick} href="/register" className="py-2 px-4 bg-mainColor rounded-xl">
+						Register
 					</Link>
-					<Link onClick={onClick} href="/login">
-						<button className="pointer-events-none py-2 px-4 rounded-xl ml-2 border">Login</button>
+					<Link onClick={onClick} href="/login" className="py-2 px-4 rounded-xl ml-2 border">
+						Login
 					</Link>
 				</>
 			) : status === "authenticated" ? (
-				<Link onClick={onClick} href="/profile">
-					<button className="pointer-events-none py-2 px-4 rounded-xl ml-2 border flex items-center gap-2">
-						<FaUser size={14} /> {session?.user?.username}
-					</button>
+				<Link onClick={onClick} href="/profile" className="py-2 px-4 rounded-xl ml-2 border flex items-center gap-2">
+					<FaUser size={14} /> {session?.user?.username}
 				</Link>
 			) : (
 				<Spinner size={40} />
