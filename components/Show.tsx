@@ -1,6 +1,5 @@
 "use client";
 
-// import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { staticURL } from "../utils/constants";
@@ -19,7 +18,7 @@ const Show = ({ id }: { id: string }) => {
 	}, []);
 	if (show.type)
 		return (
-			<div className="flex flex-col items-center justify-between gap-2">
+			<div className="flex flex-col items-center justify-between gap-2 w-40">
 				<Link href={`/${show.type}/${show._id}`}>
 					<img className="rounded-lg" src={staticURL + "/show/" + show.image} alt={show.name} />
 				</Link>

@@ -13,7 +13,7 @@ const EditActorContent = ({ countries, actor }: any) => {
 	const [photo, setPhoto] = useState<File>();
 	const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const id: string = useParams().id;
+	const id = useParams().id as string;
 	const router = useRouter();
 	const submitFn = async (e: FormEvent) => {
 		e.preventDefault();

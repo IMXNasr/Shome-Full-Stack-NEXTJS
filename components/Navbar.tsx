@@ -31,7 +31,7 @@ const LinkList = ({ mobile = false, onClick }: LinkListProps) => {
 		<ul className={`${!mobile ? "hidden" : ""} xl:flex ${mobile ? "flex flex-col" : "flex-row"} ${!mobile && "items-center"} gap-4`}>
 			{/* flex */}
 			{navLinks.map((l, idx) => (
-				<Link key={idx} onClick={onClick} className={`${params.type && l.link.includes(params.type) && "text-mainColor"} mx-2 hover:text-mainColor transition-colors`} href={l.link}>
+				<Link key={idx} onClick={onClick} className={`${params.type && l.link.includes(params.type as string) && "text-mainColor"} mx-2 hover:text-mainColor transition-colors`} href={l.link}>
 					{l.name}
 				</Link>
 			))}

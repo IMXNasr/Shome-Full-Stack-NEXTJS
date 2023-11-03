@@ -16,7 +16,7 @@ const Loader = () => (
 );
 
 const ShowsContent = ({ data, showsByScroll }: { data: any; showsByScroll: number }) => {
-	const type: string = useParams().type;
+	const type = useParams().type as string;
 	const searchParams = useSearchParams();
 	const [shows, setShows] = useState(data);
 	const [hasMore, setHasMore] = useState(true);

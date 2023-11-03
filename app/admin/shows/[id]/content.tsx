@@ -21,7 +21,7 @@ const EditShowContent = ({ show, countries }: any) => {
 	const [cover, setCover] = useState<File>();
 	const [loading, setLoading] = useState(false);
 	const [deleteConfirmation, setDeleteConfirmation] = useState(false);
-	const id: string = useParams().id;
+	const id = useParams().id as string;
 	const router = useRouter();
 
 	const submitFn = async (e: FormEvent) => {
