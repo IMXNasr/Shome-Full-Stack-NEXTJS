@@ -22,7 +22,7 @@ const UsersPage = async () => {
 	const data = await res.json();
 	return (
 		<main className="container">
-			<h1 className="text-4xl font-semibold my-5">Actors:</h1>
+			<h1 className="text-4xl font-semibold my-5">Users:</h1>
 			<>
 				<div className="w-full overflow-auto">
 					<table className="table-auto w-full border">
